@@ -3,6 +3,14 @@ from datetime import date
 from string import Template
 
 def generate_post_file(filename, title):
+    """
+    Create the post file.
+
+    Keyword arguments:
+    filename -- name of the file to be created
+    title -- title of the post
+    """
+
     with open('post.template', 'r', encoding='utf-8') as template_file:
         template_file_content = template_file.read()
     t = Template(template_file_content)

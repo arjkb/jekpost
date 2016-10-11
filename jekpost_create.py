@@ -1,5 +1,16 @@
 import argparse
 from datetime import date
+from string import Template
+
+def generate_post_file(filename, title):
+    with open('post.template', 'r', encoding='utf-8') as template_file:
+        template_file_content = template_file.read()
+    t = Template(template_file_content)
+
+    actual_file_content = t.substitute(post_title=title)
+
+    with open(filename, 'w', encoding='utf-8') as actual_file:
+        actual_file.write(actual_file_content)
 
 def get_filename(post_title, date_prefix):
     title_formatted = post_title.replace(' ', '-')
@@ -24,6 +35,7 @@ def main():
     print(" Post Title: ", post_title)
     print(" Date Prefix: ", date_prefix)
     print(" Filename: ", filename)
+    generate_post_file(filename=filename, title=post_title)
 
 if __name__ == '__main__':
     main()

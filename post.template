@@ -3,3 +3,4 @@ layout: post
 comments: true
 title: ${post_title}
 ---
+Your post content goes here.

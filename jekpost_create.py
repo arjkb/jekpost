@@ -1,7 +1,11 @@
 import argparse
 import yaml
+import shutil
 from datetime import date
 from string import Template
+
+def copy_to_dest(filename, destination):
+    shutil.copy(filename, destination)
 
 def generate_post_file(filename, title):
     """
@@ -58,6 +62,7 @@ def main():
 
     p = read_post_path('jekpost_config.yaml')
     print(p)
+    copy_to_dest(filename, p)
 
 if __name__ == '__main__':
     main()

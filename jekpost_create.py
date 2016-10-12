@@ -4,9 +4,6 @@ import shutil
 from datetime import date
 from string import Template
 
-def copy_to_dest(filename, destination):
-    shutil.copy(filename, destination)
-
 def generate_post_file(filename, title):
     """
     Create the post file.
@@ -59,10 +56,9 @@ def main():
     print(" Date Prefix: ", date_prefix)
     print(" Filename: ", filename)
     generate_post_file(filename=filename, title=post_title)
-
-    p = read_post_path('jekpost_config.yaml')
-    print(p)
-    copy_to_dest(filename, p)
+    posts_path = read_post_path('jekpost_config.yaml')
+    print(posts_path)
+    shutil.move(src=filename, dst=posts_path)
 
 if __name__ == '__main__':
     main()

@@ -1,8 +1,8 @@
 import argparse
-import yaml
 import shutil
 import os
 
+import yaml
 
 from datetime import date
 from string import Template
@@ -28,24 +28,26 @@ def generate_post_file(filename, title):
         actual_file.write(actual_file_content)
     print(" done!")
 
-def read_post_path(config_filename):
+def get_post_destination(config_filename):
     """
     Read the config yaml file, and return the filepath to the Jekyll
-    folder that contains the posts
+    folder that contains the posts.
     """
 
-    print(" Reading config...", end="")
     with open(config_filename, 'r', encoding='utf-8') as config_file:
         doc = yaml.load(config_file)
-    print(" done!")
     return doc['posts_location']
 
-def get_filename(post_title, date_prefix):
+def make_filename(post_title, date_prefix):
     title_formatted = post_title.replace(' ', '-')
     filename = date_prefix + '-' + title_formatted + '.md'
     return filename
 
-def get_current_date():
+def get_current_date_prefix():
+    """
+    Return the date in the format: 'YEAR=MONTH-DAY'
+    """
+
     today = date.today()
     year = str(today.year)
     month = str(today.month)
@@ -59,20 +61,19 @@ def main():
     args = parser.parse_args()
 
     post_title = args.title.strip()
-    date_prefix = get_current_date()
-    filename = get_filename(post_title=post_title, date_prefix=date_prefix)
+    filename = make_filename(post_title, get_current_date_prefix())
     print(" Post Title: ", post_title)
     print(" Filename: ", filename)
 
-    generate_post_file(filename=filename, title=post_title)
-    posts_path = read_post_path('jekpost_config.yaml')
+    generate_post_file(filename, post_title)
 
     try:
-        print(" Moving to: ", posts_path)
-        shutil.move(src=filename, dst=posts_path)
+        post_destination = get_post_destination('jekpost_config.yaml')
+        print(" Moving to: ", post_destination)
+        shutil.move(src=filename, dst=post_destination)
     except Exception as e:
-        print("\n ERROR: ", e)
-        os.remove(filename)  # remove local copy
+        print("\n", type(e).__name__, ": ", e)
+        os.remove(filename)  # remove local copy of post file
     else:
         print("\n New post created!\n Happy blogging!")
 

@@ -43,7 +43,12 @@ def read_config(config_filename, config_key):
 
     with open(config_filename, 'r', encoding='utf-8') as config_file:
         doc = yaml.load(config_file)
-    return doc[config_key]
+
+    if config_key in doc:
+        return doc[config_key]
+    else:
+        print(" Could not find " + config_key + " in " + config_filename)
+        return None
 
 def make_filename(post_title, date_prefix):
     title_formatted = post_title.replace(' ', '-')

@@ -7,6 +7,11 @@ import yaml
 from datetime import date
 from string import Template
 
+def read_template_file(template_file):
+    with open(template_file, 'r', encoding='utf-8') as template_file:
+        template_file_content = template_file.read()
+    return Template(template_file_content)
+
 def generate_post_file(filename, title):
     """
     Create the post file.
@@ -18,11 +23,8 @@ def generate_post_file(filename, title):
 
     print(" Generating post file...", end="")
 
-    with open('post.template', 'r', encoding='utf-8') as template_file:
-        template_file_content = template_file.read()
-    t = Template(template_file_content)
-
-    actual_file_content = t.substitute(post_title=title)
+    post_template = read_template_file('post.template')
+    actual_file_content = post_template.substitute(post_title=title)
 
     with open(filename, 'w', encoding='utf-8') as actual_file:
         actual_file.write(actual_file_content)

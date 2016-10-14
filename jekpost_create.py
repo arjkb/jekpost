@@ -7,12 +7,14 @@ import yaml
 from datetime import date
 from string import Template
 
+CONFIG_FILE_NAME = 'jekpost_config.yaml'
+
 def read_template_file(template_file):
     with open(template_file, 'r', encoding='utf-8') as template_file:
         template_file_content = template_file.read()
     return Template(template_file_content)
 
-def generate_post_file(filename, title):
+def generate_post_file(filename, title, disqus_name=None):
     """
     Create the post file.
 
@@ -28,12 +30,17 @@ def generate_post_file(filename, title):
 
     with open(filename, 'w', encoding='utf-8') as actual_file:
         actual_file.write(actual_file_content)
+        if disqus_name is not None:
+            t = read_template_file('disqus.template')
+            disqus_script = t.substitute(disqus_shortname=disqus_name)
+            actual_file.write(disqus_script)
     print(" done!")
 
 def read_config(config_filename, config_key):
     """
     Read the yaml config file, and return the config_key value
     """
+
     with open(config_filename, 'r', encoding='utf-8') as config_file:
         doc = yaml.load(config_file)
     return doc[config_key]
@@ -66,10 +73,10 @@ def main():
     print(" Post Title: ", post_title)
     print(" Filename: ", filename)
 
-    generate_post_file(filename, post_title)
-
     try:
-        post_destination = read_config('jekpost_config.yaml', 'posts_location')
+        disqus_shortname = read_config(CONFIG_FILE_NAME, 'disqus_shortname')
+        post_destination = read_config(CONFIG_FILE_NAME, 'posts_location')
+        generate_post_file(filename, post_title, disqus_shortname)
         print(" Moving to: ", post_destination)
         shutil.move(src=filename, dst=post_destination)
     except Exception as e:

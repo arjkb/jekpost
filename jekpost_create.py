@@ -30,15 +30,13 @@ def generate_post_file(filename, title):
         actual_file.write(actual_file_content)
     print(" done!")
 
-def get_post_destination(config_filename):
+def read_config(config_filename, config_key):
     """
-    Read the config yaml file, and return the filepath to the Jekyll
-    folder that contains the posts.
+    Read the yaml config file, and return the config_key value
     """
-
     with open(config_filename, 'r', encoding='utf-8') as config_file:
         doc = yaml.load(config_file)
-    return doc['posts_location']
+    return doc[config_key]
 
 def make_filename(post_title, date_prefix):
     title_formatted = post_title.replace(' ', '-')
@@ -71,7 +69,7 @@ def main():
     generate_post_file(filename, post_title)
 
     try:
-        post_destination = get_post_destination('jekpost_config.yaml')
+        post_destination = read_config('jekpost_config.yaml', 'posts_location')
         print(" Moving to: ", post_destination)
         shutil.move(src=filename, dst=post_destination)
     except Exception as e:

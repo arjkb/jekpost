@@ -60,7 +60,8 @@ def main():
     parser.add_argument('title', help='Post title')
     args = parser.parse_args()
 
-    post_title = args.title.strip()
+    post_title = args.title.strip() # remove whitespaces that may be at
+                                    # either ends.
     filename = make_filename(post_title, get_current_date_prefix())
     print(" Post Title: ", post_title)
     print(" Filename: ", filename)

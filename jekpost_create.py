@@ -10,6 +10,10 @@ from string import Template
 CONFIG_FILE_NAME = 'jekpost_config.yaml'
 
 def read_template_file(template_file):
+    """
+    Read a template file, and return it as a Template object
+    """
+
     with open(template_file, 'r', encoding='utf-8') as template_file:
         template_file_content = template_file.read()
     return Template(template_file_content)
@@ -61,11 +65,7 @@ def get_current_date_prefix():
     """
 
     today = date.today()
-    year = str(today.year)
-    month = str(today.month)
-    day = str(today.day)
-    date_string = year + '-' + month + '-' + day
-    return date_string
+    return str(today.year) + '-' + str(today.month) + '-' + str(today.day)
 
 def main():
     parser = argparse.ArgumentParser()

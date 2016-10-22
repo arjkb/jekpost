@@ -1,3 +1,5 @@
+[![LICENSE](https://img.shields.io/badge/license-GPLv3-blue.svg?style=flat-square)](http://choosealicense.com/licenses/gpl-3.0/)
+
 =========
  JekPost
 =========

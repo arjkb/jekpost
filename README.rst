@@ -11,7 +11,5 @@ This project is currently in its development stages.
 USAGE
 =====
 
-To create a new Jekyll post
-
-.. code-block:: bash
+To create a new Jekyll post::
   $ python jekpost_create.py 'My Post Title'

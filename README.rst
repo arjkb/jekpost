@@ -12,4 +12,5 @@ USAGE
 =====
 
 To create a new Jekyll post::
+
   $ python jekpost_create.py 'My Post Title'

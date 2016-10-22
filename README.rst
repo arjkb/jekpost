@@ -13,5 +13,5 @@ USAGE
 
 To create a new Jekyll post
 
-..code-block:: bash
+.. code-block:: bash
   $ python jekpost_create.py 'My Post Title'

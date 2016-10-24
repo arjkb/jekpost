@@ -31,13 +31,19 @@ def generate_post_file(filename, title, disqus_name=None):
 
     print(" Generating post file...", end="")
 
-    post_template = read_template_file('templates/post.template')
+    abspath = os.path.abspath(__file__)
+    dname = os.path.dirname(abspath)
+
+    template_path = dname + '/templates/'
+
+    # post_template = read_template_file('templates/post.template')
+    post_template = read_template_file(template_path + 'post.template')
     actual_file_content = post_template.substitute(post_title=title)
 
     with open(filename, 'w', encoding='utf-8') as actual_file:
         actual_file.write(actual_file_content)
         if disqus_name is not None:
-            t = read_template_file('templates/disqus.template')
+            t = read_template_file(template_path + 'disqus.template')
             disqus_script = t.substitute(disqus_shortname=disqus_name)
             actual_file.write(disqus_script)
     print(" done!")
@@ -78,21 +84,28 @@ def main():
     post_title = args.title.strip() # remove whitespaces that may be at
                                     # either ends.
     filename = make_filename(post_title, get_current_date_prefix())
+
+    abspath = os.path.abspath(__file__)
+    dname = os.path.dirname(abspath)
+
+    print(" Abspath: ", abspath)
+    print(" Dirname: ", dname)
     print(" Post Title: ", post_title)
     print(" Filename: ", filename)
 
-    try:
-        disqus_shortname = read_config(CONFIG_FILE_NAME, 'disqus_shortname')
-        post_destination = read_config(CONFIG_FILE_NAME, 'posts_location')
-        generate_post_file(filename, post_title, disqus_shortname)
+    # try:
+        # disqus_shortname = read_config(CONFIG_FILE_NAME, 'disqus_shortname')
+        # post_destination = read_config(CONFIG_FILE_NAME, 'posts_location')
+    disqus_shortname = ''
+    generate_post_file(filename, post_title, disqus_shortname)
         # print(" Moving to: ", post_destination)
         # shutil.move(src=filename, dst=post_destination)
-        shutil.move(src=filename, dst=args.location)
-    except Exception as e:
-        print("\n", type(e).__name__, ": ", e)
-        os.remove(filename)  # remove local copy of post file
-    else:
-        print("\n New post created!\n Happy blogging!")
+    shutil.move(src=filename, dst=args.location)
+    # except Exception as e:
+    #     print("\n", type(e).__name__, ": ", e)
+    #     os.remove(filename)  # remove local copy of post file
+    # else:
+    #     print("\n New post created!\n Happy blogging!")
 
 if __name__ == '__main__':
     main()

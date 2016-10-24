@@ -70,6 +70,7 @@ def get_current_date_prefix():
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('title', help='Post title')
+    parser.add_argument('location', help='Destination directory')
     args = parser.parse_args()
 
     post_title = args.title.strip() # remove whitespaces that may be at
@@ -82,8 +83,9 @@ def main():
         disqus_shortname = read_config(CONFIG_FILE_NAME, 'disqus_shortname')
         post_destination = read_config(CONFIG_FILE_NAME, 'posts_location')
         generate_post_file(filename, post_title, disqus_shortname)
-        print(" Moving to: ", post_destination)
-        shutil.move(src=filename, dst=post_destination)
+        # print(" Moving to: ", post_destination)
+        # shutil.move(src=filename, dst=post_destination)
+        shutil.move(src=filename, dst=args.location)
     except Exception as e:
         print("\n", type(e).__name__, ": ", e)
         os.remove(filename)  # remove local copy of post file

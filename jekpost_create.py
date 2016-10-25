@@ -40,6 +40,10 @@ def generate_post_file(filename, title, disqus_name=None):
     post_template = read_template_file(template_path + 'post.template')
     actual_file_content = post_template.substitute(post_title=title)
 
+    # if os.path.isfile(filename):
+    #     print("Error: File already exists!")
+    #     raise Exception(" EXC: File Already Exists!")
+
     with open(filename, 'w', encoding='utf-8') as actual_file:
         actual_file.write(actual_file_content)
         if disqus_name is not None:
@@ -95,25 +99,21 @@ def main():
     print(" Post Title: ", post_title)
     print(" Filename: ", filename)
 
-    # try:
-        # disqus_shortname = read_config(CONFIG_FILE_NAME, 'disqus_shortname')
-        # post_destination = read_config(CONFIG_FILE_NAME, 'posts_location')
-    # disqus_shortname = ''
-    # generate_post_file(filename, post_title, disqus_shortname)
+    try:
+        if args.disqus:
+            generate_post_file(filename, post_title, args.disqus)
+        else:
+            generate_post_file(filename, post_title)
 
-    if args.disqus:
-        generate_post_file(filename, post_title, args.disqus)
+        print(" Moving to: ", args.location)
+        shutil.move(src=filename, dst=args.location)
+    except Exception as e:
+        # print("\n", type(e).__name__, ": ", e)
+        print("\n ERROR:", e)
+        print("\n Aborting!")
+        os.remove(filename) # remove local copy of post file
     else:
-        generate_post_file(filename, post_title)
-
-        # print(" Moving to: ", post_destination)
-        # shutil.move(src=filename, dst=post_destination)
-    shutil.move(src=filename, dst=args.location)
-    # except Exception as e:
-    #     print("\n", type(e).__name__, ": ", e)
-    #     os.remove(filename)  # remove local copy of post file
-    # else:
-    #     print("\n New post created!\n Happy blogging!")
+        print("\n New post created!\n Happy blogging!")
 
 if __name__ == '__main__':
     main()

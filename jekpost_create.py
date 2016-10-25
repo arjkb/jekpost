@@ -79,6 +79,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('title', help='Post title')
     parser.add_argument('location', help='Destination directory')
+    parser.add_argument('-dq', '--disqus', help='Disqus shortname')
     args = parser.parse_args()
 
     post_title = args.title.strip() # remove whitespaces that may be at
@@ -88,6 +89,7 @@ def main():
     abspath = os.path.abspath(__file__)
     dname = os.path.dirname(abspath)
 
+    print(" Disqus shortname: ", args.disqus)
     print(" Abspath: ", abspath)
     print(" Dirname: ", dname)
     print(" Post Title: ", post_title)
@@ -96,8 +98,14 @@ def main():
     # try:
         # disqus_shortname = read_config(CONFIG_FILE_NAME, 'disqus_shortname')
         # post_destination = read_config(CONFIG_FILE_NAME, 'posts_location')
-    disqus_shortname = ''
-    generate_post_file(filename, post_title, disqus_shortname)
+    # disqus_shortname = ''
+    # generate_post_file(filename, post_title, disqus_shortname)
+
+    if args.disqus:
+        generate_post_file(filename, post_title, args.disqus)
+    else:
+        generate_post_file(filename, post_title)
+
         # print(" Moving to: ", post_destination)
         # shutil.move(src=filename, dst=post_destination)
     shutil.move(src=filename, dst=args.location)

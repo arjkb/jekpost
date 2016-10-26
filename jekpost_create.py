@@ -30,7 +30,7 @@ def generate_post_file(title, location, disqus_name=None):
 
     template_dir = os.path.join(src_dir, "templates")
     post_template_path = os.path.join(template_dir, "post.template")
-    disqus_template_path = os.path.join(template_dir, "disqus_template")
+    disqus_template_path = os.path.join(template_dir, "disqus.template")
 
     post_template = read_template_file(post_template_path)
     actual_file_content = post_template.substitute(post_title=title)

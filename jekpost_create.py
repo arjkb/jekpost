@@ -11,9 +11,6 @@ from string import Template
 
 CONFIG_FILE_NAME = 'jekpost_config.yaml'
 
-class FileGenerationError(Exception):
-    pass
-
 def read_template_file(template_file):
     """
     Read a template file, and return it as a Template object
@@ -87,12 +84,7 @@ def main():
     post_title = args.title.strip() # remove whitespaces that may be at
                                     # either ends.
 
-    abspath = os.path.abspath(__file__)
-    dname = os.path.dirname(abspath)
-
     print(" Disqus shortname: ", args.disqus)
-    print(" Abspath: ", abspath)
-    print(" Dirname: ", dname)
     print(" Post Title: ", post_title)
 
     try:

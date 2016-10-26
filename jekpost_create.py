@@ -11,6 +11,9 @@ from string import Template
 
 CONFIG_FILE_NAME = 'jekpost_config.yaml'
 
+class FileGenerationError(Exception):
+    pass
+
 def read_template_file(template_file):
     """
     Read a template file, and return it as a Template object
@@ -40,9 +43,8 @@ def generate_post_file(filename, title, disqus_name=None):
     post_template = read_template_file(template_path + 'post.template')
     actual_file_content = post_template.substitute(post_title=title)
 
-    # if os.path.isfile(filename):
-    #     print("Error: File already exists!")
-    #     raise Exception(" EXC: File Already Exists!")
+    if os.path.isfile(filename):
+        raise FileGenerationError("File already exists in current directory")
 
     with open(filename, 'w', encoding='utf-8') as actual_file:
         actual_file.write(actual_file_content)
@@ -105,12 +107,16 @@ def main():
         else:
             generate_post_file(filename, post_title)
 
-        print(" Moving to: ", args.location)
-        shutil.move(src=filename, dst=args.location)
-    except Exception as e:
+        if args.location is not '.':
+            print(" Moving to: ", args.location)
+            shutil.move(src=filename, dst=args.location)
+
+    except FileGenerationError as err:
+        print("\n\n Error: ", err)
+        print(" Remove similarly named file in current directory and retry.")
+    except shutil.Error as err:
         # print("\n", type(e).__name__, ": ", e)
-        print("\n ERROR:", e)
-        print("\n Aborting!")
+        print("\n Error: ", err)
         os.remove(filename) # remove local copy of post file
     else:
         print("\n New post created!\n Happy blogging!")

@@ -37,10 +37,13 @@ def generate_post_file(filename, title, disqus_name=None):
     abspath = os.path.abspath(__file__)
     dname = os.path.dirname(abspath)
 
-    template_path = dname + '/templates/'
+    # template_path = dname + '/templates/'
+    template_file_name = os.path.join(dname, "templates", "post.template")
+    disqus_file_name = os.path.join(dname, "templates", "disqus.template")
 
     # post_template = read_template_file('templates/post.template')
-    post_template = read_template_file(template_path + 'post.template')
+    # post_template = read_template_file(template_path + 'post.template')
+    post_template = read_template_file(template_file_name)
     actual_file_content = post_template.substitute(post_title=title)
 
     if os.path.isfile(filename):
@@ -49,7 +52,8 @@ def generate_post_file(filename, title, disqus_name=None):
     with open(filename, 'w', encoding='utf-8') as actual_file:
         actual_file.write(actual_file_content)
         if disqus_name is not None:
-            t = read_template_file(template_path + 'disqus.template')
+            # t = read_template_file(template_path + 'disqus.template')
+            t = read_template_file(disqus_file_name)
             disqus_script = t.substitute(disqus_shortname=disqus_name)
             actual_file.write(disqus_script)
     print(" done!")

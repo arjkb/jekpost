@@ -4,8 +4,6 @@ import argparse
 import shutil
 import os
 
-import yaml
-
 from datetime import date
 from string import Template
 
@@ -46,20 +44,6 @@ def generate_post_file(title, location, disqus_name=None):
 
     print(" done!")
     return filename
-
-def read_config(config_filename, config_key):
-    """
-    Read the yaml config file, and return the config_key value
-    """
-
-    with open(config_filename, 'r', encoding='utf-8') as config_file:
-        doc = yaml.load(config_file)
-
-    if config_key in doc:
-        return doc[config_key]
-    else:
-        print(" Could not find " + config_key + " in " + config_filename)
-        return None
 
 def make_filename(post_title, date_prefix):
     title_formatted = post_title.replace(' ', '-')

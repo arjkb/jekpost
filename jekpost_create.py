@@ -23,41 +23,6 @@ def read_template_file(template_file):
         template_file_content = template_file.read()
     return Template(template_file_content)
 
-# def generate_post_file(filename, title, disqus_name=None):
-#     """
-#     Create the post file.
-#
-#     Keyword arguments:
-#     filename -- name of the file to be created
-#     title -- title of the post
-#     """
-#
-#     print(" Generating post file...", end="")
-#
-#     abspath = os.path.abspath(__file__)
-#     dname = os.path.dirname(abspath)
-#
-#     # template_path = dname + '/templates/'
-#     template_file_name = os.path.join(dname, "templates", "post.template")
-#     disqus_file_name = os.path.join(dname, "templates", "disqus.template")
-#
-#     # post_template = read_template_file('templates/post.template')
-#     # post_template = read_template_file(template_path + 'post.template')
-#     post_template = read_template_file(template_file_name)
-#     actual_file_content = post_template.substitute(post_title=title)
-#
-#     if os.path.isfile(filename):
-#         raise FileGenerationError("File already exists in current directory")
-#
-#     with open(filename, 'w', encoding='utf-8') as actual_file:
-#         actual_file.write(actual_file_content)
-#         if disqus_name is not None:
-#             # t = read_template_file(template_path + 'disqus.template')
-#             t = read_template_file(disqus_file_name)
-#             disqus_script = t.substitute(disqus_shortname=disqus_name)
-#             actual_file.write(disqus_script)
-#     print(" done!")
-
 def generate_post_file(title, location, disqus_name=None):
 
     print(" Generating post file...", end="")
@@ -121,7 +86,6 @@ def main():
 
     post_title = args.title.strip() # remove whitespaces that may be at
                                     # either ends.
-    # filename = make_filename(post_title, get_current_date_prefix())
 
     abspath = os.path.abspath(__file__)
     dname = os.path.dirname(abspath)
@@ -130,28 +94,6 @@ def main():
     print(" Abspath: ", abspath)
     print(" Dirname: ", dname)
     print(" Post Title: ", post_title)
-    # print(" Filename: ", filename)
-
-    # try:
-    #     filename = generate_post_file(post_title, args.location, args.disqus)
-    #     # if args.disqus:
-    #         # filename = generate_post_file(post_title, args.location, args.disqus)
-    #     # else:
-    #     #     generate_post_file(filename, post_title)
-    #
-    #     if args.location is not '.':
-    #         print(" Moving to: ", args.location)
-    #         shutil.move(src=filename, dst=args.location)
-    #
-    # except FileGenerationError as err:
-    #     print("\n\n Error: ", err)
-    #     print(" Remove similarly named file in current directory and retry.")
-    # except shutil.Error as err:
-    #     # print("\n", type(e).__name__, ": ", e)
-    #     print("\n Error: ", err)
-    #     os.remove(filename) # remove local copy of post file
-    # else:
-    #     print("\n New post created!\n Happy blogging!")
 
     try:
         filename = generate_post_file(post_title, args.location, args.disqus)

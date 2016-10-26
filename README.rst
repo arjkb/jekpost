@@ -3,14 +3,14 @@
 =========
  JekPost
 =========
-
 A command-line utility to make your Jekyll experience smoother.
 
 STATUS
 =====
-This project is currently in its development stages. I've been working from on
-a Linux Fedora 24 machine. I honestly have no idea how this is going to behave
-on other operating systems.
+This project is currently in its development stages.
+
+I've been working from a Linux Fedora 24 machine. I honestly have no idea how
+this is going to behave on other operating systems.
 
 USAGE
 =====

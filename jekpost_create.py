@@ -153,8 +153,17 @@ def main():
     # else:
     #     print("\n New post created!\n Happy blogging!")
 
-    filename = generate_post_file(post_title, args.location, args.disqus)
-    print(" New post: ", filename)
+    try:
+        filename = generate_post_file(post_title, args.location, args.disqus)
+    except FileExistsError as err:
+        print("\n\n", err)
+    except FileNotFoundError as err:
+        print("\n\n", err)
+    except NotADirectoryError as err:
+        print("\n\n", err)
+    else:
+        print(" New post created: ", filename)
+        print(" Happy blogging!")
 
 if __name__ == '__main__':
     main()

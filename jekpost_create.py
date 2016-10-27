@@ -7,8 +7,6 @@ import os
 from datetime import date
 from string import Template
 
-CONFIG_FILE_NAME = 'jekpost_config.yaml'
-
 def read_template_file(template_file):
     """
     Read a template file, and return it as a Template object

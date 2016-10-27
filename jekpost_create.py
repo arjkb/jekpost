@@ -3,8 +3,8 @@
 import argparse
 import shutil
 import os
+import datetime
 
-from datetime import date
 from string import Template
 
 def read_template_file(template_file):
@@ -19,7 +19,7 @@ def read_template_file(template_file):
 def generate_post_file(title, location, disqus_name=None):
 
     print(" Generating post file...", end="")
-    filename = make_filename(title, get_current_date_prefix())
+    filename = make_filename(title, get_date_formatted(datetime.date.today()))
 
     src_path = os.path.abspath(__file__)
     src_dir = os.path.dirname(src_path)
@@ -48,13 +48,12 @@ def make_filename(post_title, date_prefix):
     filename = date_prefix + '-' + title_formatted + '.md'
     return filename
 
-def get_current_date_prefix():
+def get_date_formatted(date):
     """
     Return the date in the format: 'YEAR-MONTH-DAY'
     """
 
-    today = date.today()
-    return str(today.year) + '-' + str(today.month) + '-' + str(today.day)
+    return str(date.year) + '-' + str(date.month) + '-' + str(date.day)
 
 def main():
     parser = argparse.ArgumentParser()

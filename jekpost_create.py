@@ -50,7 +50,7 @@ def make_filename(post_title, date_prefix):
 
 def get_current_date_prefix():
     """
-    Return the date in the format: 'YEAR=MONTH-DAY'
+    Return the date in the format: 'YEAR-MONTH-DAY'
     """
 
     today = date.today()

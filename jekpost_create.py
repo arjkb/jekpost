@@ -57,7 +57,7 @@ def get_date_formatted(date):
     month = str(date.month)
     day = str(date.day)
 
-    single_digits = [i for i in range(1, 10)]
+    single_digits = range(1, 10)
 
     if date.month in single_digits:
         month = '0' + month

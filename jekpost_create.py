@@ -53,7 +53,19 @@ def get_date_formatted(date):
     Return the date in the format: 'YEAR-MONTH-DAY'
     """
 
-    return str(date.year) + '-' + str(date.month) + '-' + str(date.day)
+    year = str(date.year)
+    month = str(date.month)
+    day = str(date.day)
+
+    single_digits = [i for i in range(1, 10)]
+
+    if date.month in single_digits:
+        month = '0' + month
+
+    if date.day in single_digits:
+        day = '0' + day
+
+    return year + '-' + month + '-' + day
 
 def main():
     parser = argparse.ArgumentParser()

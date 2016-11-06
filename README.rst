@@ -1,4 +1,4 @@
-.. image:: https://img.shields.io/badge/license-GPLv3-blue.svg?style=flat-square :target: http://choosealicense.com/licenses/gpl-3.0/
+.. image:: https://img.shields.io/badge/license-MIT-blue.svg :target: http://choosealicense.com/licenses/mit/
 
 =========
  JekPost

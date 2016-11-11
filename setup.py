@@ -6,11 +6,16 @@ setup(
     author='Arjun Krishna Babu',
     author_email='arjunkrishnababu96@gmail.com',
     packages=['jekpost'],
-    url='',
+    url='https://github.com/arjunkrishnababu96/jekpost',
     license='LICENSE.txt',
     description='Package to ease the process of creating a new Jekyll post',
-    long_description=open('README.rst').read(),
+    long_description=open('README.txt').read(),
     install_requires=[
         "python >= 3.5"
+    ],
+    classifiers=[
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3.5",
+        "Topic :: Utilities",
     ],
 )

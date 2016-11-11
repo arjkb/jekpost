@@ -10,9 +10,6 @@ setup(
     license='LICENSE.txt',
     description='Package to ease the process of creating a new Jekyll post',
     long_description=open('README.txt').read(),
-    install_requires=[
-        "python >= 3.5"
-    ],
     classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 3.5",

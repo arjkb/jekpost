@@ -1,5 +1,5 @@
 import unittest
-import jekpost_create as jek
+import jekpost.jekpost_create as jek
 
 from datetime import date
 

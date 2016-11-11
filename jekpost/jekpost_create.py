@@ -22,7 +22,9 @@ def generate_post_file(title, location, disqus_name=None):
     filename = make_filename(title, get_date_formatted(datetime.date.today()))
 
     src_path = os.path.abspath(__file__)
-    src_dir = os.path.dirname(src_path)
+
+    # go two levels up
+    src_dir = os.path.dirname(os.path.dirname(src_path))
 
     template_dir = os.path.join(src_dir, "templates")
     post_template_path = os.path.join(template_dir, "post.template")

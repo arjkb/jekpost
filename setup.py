@@ -8,7 +8,7 @@ setup(
     packages=['jekpost'],
     url='',
     license='LICENSE.txt',
-    description='Package to ease the process of creating a new Jekyll post'
+    description='Package to ease the process of creating a new Jekyll post',
     long_description=open('README.rst').read(),
     install_requires=[
         "python >= 3.5"

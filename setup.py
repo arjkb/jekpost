@@ -2,14 +2,14 @@ from setuptools import setup
 
 setup(
     name='JekPost',
-    version='1.0',
+    version='1.0.1',
     author='Arjun Krishna Babu',
     author_email='arjunkrishnababu96@gmail.com',
     packages=['jekpost'],
     url='https://github.com/arjunkrishnababu96/jekpost',
     license='LICENSE.txt',
     description='Package to ease the process of creating a new Jekyll post',
-    long_description=open('README.txt').read(),
+    long_description=open('README.rst').read(),
     classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",

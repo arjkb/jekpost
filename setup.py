@@ -17,4 +17,9 @@ setup(
         "Operating System :: POSIX",
         "Topic :: Utilities",
     ],
+    entry_points={
+        'console_scripts':  [
+            'jekpost_create = jekpost.jekpost_create:main'
+        ],
+    }
 )

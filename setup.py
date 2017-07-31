@@ -9,7 +9,7 @@ setup(
     url='https://github.com/arjunkrishnababu96/jekpost',
     license='LICENSE.txt',
     description='Package to ease the process of creating a new Jekyll post',
-    long_description=open('README.txt').read(),
+    long_description=open('README.rst').read(),
     classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",

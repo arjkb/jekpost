@@ -1,6 +1,6 @@
 LICENSE.txt
 MANIFEST.in
-README.txt
+README.rst
 setup.py
 JekPost.egg-info/PKG-INFO
 JekPost.egg-info/SOURCES.txt

@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='JekPost',
-    version='1.0.1',
+    version='1.1.0',
     author='Arjun Krishna Babu',
     author_email='arjunkrishnababu96@gmail.com',
     packages=['jekpost'],

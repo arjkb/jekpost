@@ -1,27 +1,25 @@
-.. image:: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square  :target: http://choosealicense.com/licenses/mit/
-
-=========
  JekPost
 =========
-A command-line utility to make your Jekyll experience smoother.
 
-STATUS
-=====
-This project is currently in its development stages.
+A command-line utility to create a Jekyll posts file with appropriate filename and headers.
 
-I've been working from a Linux Fedora 24 machine. I honestly have no idea how
-this is going to behave on other operating systems.
 
 USAGE
 =====
 
-Ensure that the directory where you installed JekPost is in your :code:`$PATH`.
+**Ensure that the directory where you installed JekPost is in your `$PATH`.**
 
-To create a new Jekyll post::
+To create a new Jekyll post:
+
+::
+
+  $ jekpost_create.py 'Post Title' dir
+
+`dir` is the directory name where you wish to save the new post to, relative to the directory from which you run this command.
+This is usually the `_posts` directory.
+
+JekPost currently supports adding in an optional Disqus shortname. To create a post with support for Disqus comments:
+
+::
 
   $ jekpost_create.py 'Post Title' dir --disqus 'your-disqus-shortname'
-
-:code:`dir` is the directory name where you wish to save the new post to. It
-can also be relative pathnames.
-
-JekPost currently supports adding in an optional Disqus shortname.

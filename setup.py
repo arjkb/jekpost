@@ -12,7 +12,7 @@ setup(
     long_description=open('README.txt').read(),
     classifiers=[
         "Programming Language :: Python",
-        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3",
         "Topic :: Utilities",
     ],
 )

@@ -8,4 +8,4 @@ JekPost.egg-info/dependency_links.txt
 JekPost.egg-info/entry_points.txt
 JekPost.egg-info/top_level.txt
 jekpost/__init__.py
-jekpost/jekpost_create.py
+jekpost/jekpost.py

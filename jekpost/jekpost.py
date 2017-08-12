@@ -1,48 +1,23 @@
 #!/usr/bin/env python3
 
 import argparse
-import shutil
-import os
 import datetime
-
-from string import Template
-
-def read_template_file(template_file):
-    """
-    Read a template file, and return it as a Template object
-    """
-
-    with open(template_file, 'r', encoding='utf-8') as template_file:
-        template_file_content = template_file.read()
-    return Template(template_file_content)
+import os
 
 def generate_post_file(title, location, disqus_name=None):
-
-    print(" Generating post file...", end="")
+    title_line = "title: {}".format(title)
     filename = make_filename(title, get_date_formatted(datetime.date.today()))
-
-    src_path = os.path.abspath(__file__)
-
-    # go two levels up
-    src_dir = os.path.dirname(os.path.dirname(src_path))
-
-    template_dir = os.path.join(src_dir, "templates")
-    post_template_path = os.path.join(template_dir, "post.template")
-    disqus_template_path = os.path.join(template_dir, "disqus.template")
-
-    post_template = read_template_file(post_template_path)
-    actual_file_content = post_template.substitute(post_title=title)
 
     os.chdir(location) # switch to destination directory
 
-    with open(filename, 'x', encoding='utf-8') as actual_file:
-        actual_file.write(actual_file_content)
-        if disqus_name is not None:
-            t = read_template_file(disqus_template_path)
-            disqus_script = t.substitute(disqus_shortname=disqus_name)
-            actual_file.write(disqus_script)
-
-    print(" done!")
+    with open(filename, mode='x', encoding='utf-8') as actual_file:
+        print('---', file=actual_file)
+        print('layout: post', file=actual_file)
+        print(title_line, file=actual_file)
+        print('excerpt: Your excerpt goes here', file=actual_file)
+        print('tags: tag1, tag2', file=actual_file)
+        print('---', file=actual_file)
+        print('Your post content goes here', file=actual_file)
     return filename
 
 def make_filename(post_title, date_prefix):

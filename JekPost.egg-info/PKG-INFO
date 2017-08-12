@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: JekPost
-Version: 2.0.0
+Version: 2.0.1
 Summary: Package to ease the process of creating a new Jekyll post
 Home-page: https://github.com/arjunkrishnababu96/jekpost
 Author: Arjun Krishna Babu
@@ -19,7 +19,7 @@ Description: JekPost
         
         ::
         
-          $ jekpost_create.py 'Post Title' dir
+          $ jekpost 'Post Title' dir
         
         `dir` is the directory where the new post will be saved.
         This is usually the `_posts` directory.

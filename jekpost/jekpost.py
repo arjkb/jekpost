@@ -2,10 +2,13 @@
 
 import argparse
 import datetime
+import os
 
 def generate_post_file(title, location, disqus_name=None):
     title_line = "title: {}".format(title)
     filename = make_filename(title, get_date_formatted(datetime.date.today()))
+
+    os.chdir(location) # switch to destination directory
 
     with open(filename, mode='x', encoding='utf-8') as actual_file:
         print('---', file=actual_file)

@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
 import argparse
-import shutil
-import os
 import datetime
 
 def generate_post_file(title, location, disqus_name=None):

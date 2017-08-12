@@ -24,7 +24,7 @@ setup(
     ],
     entry_points={
         'console_scripts':  [
-            'jekpost_create = jekpost.jekpost:main',
+            'jekpost=jekpost.jekpost:main',
         ],
     }
 )

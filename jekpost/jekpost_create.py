@@ -5,17 +5,6 @@ import shutil
 import os
 import datetime
 
-from string import Template
-
-def read_template_file(template_file):
-    """
-    Read a template file, and return it as a Template object
-    """
-
-    with open(template_file, 'r', encoding='utf-8') as template_file:
-        template_file_content = template_file.read()
-    return Template(template_file_content)
-
 def generate_post_file(title, location, disqus_name=None):
     title_line = "title: {}".format(title)
     filename = make_filename(title, get_date_formatted(datetime.date.today()))

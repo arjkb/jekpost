@@ -15,7 +15,6 @@ def generate_post_file(title, location, disqus_name=None):
         print('tags: tag1, tag2', file=actual_file)
         print('---', file=actual_file)
         print('Your post content goes here', file=actual_file)
-    print("done!")
     return filename
 
 def make_filename(post_title, date_prefix):

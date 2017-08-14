@@ -4,7 +4,7 @@ import argparse
 import datetime
 import os
 
-def generate_post_file(title, location, disqus_name=None):
+def generate_post_file(title, location):
     title_line = "title: {}".format(title)
     filename = make_filename(title, get_date_formatted(datetime.date.today()))
 
@@ -48,17 +48,15 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('title', help='Post title')
     parser.add_argument('location', help='Destination directory')
-    parser.add_argument('-dq', '--disqus', help='Disqus shortname')
     args = parser.parse_args()
 
     post_title = args.title.strip() # remove whitespaces that may be at
                                     # either ends.
 
-    print(" Disqus shortname: ", args.disqus)
     print(" Post Title: ", post_title)
 
     try:
-        filename = generate_post_file(post_title, args.location, args.disqus)
+        filename = generate_post_file(post_title, args.location)
     except FileExistsError as err:
         print("\n\n", err)
     except FileNotFoundError as err:

@@ -65,7 +65,6 @@ def main():
         print("\n\n", err)
     else:
         print(" New post created: ", filename)
-        print(" Happy blogging!")
 
 if __name__ == '__main__':
     main()

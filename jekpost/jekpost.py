@@ -21,7 +21,7 @@ def generate_post_file(title, location):
     return filename
 
 def make_filename(post_title, date_prefix):
-    title_formatted = post_title.replace(' ', '-')
+    title_formatted = post_title.replace(' ', '-').lower()
     filename = date_prefix + '-' + title_formatted + '.md'
     return filename
 

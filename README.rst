@@ -13,5 +13,5 @@ To create a new Jekyll post:
 
   $ jekpost 'Post Title' dir
 
-`dir` is the directory where the new post will be saved.
-This is usually the `_posts` directory.
+``dir`` is the directory where the new post will be saved.
+This is usually the ``_posts`` directory.

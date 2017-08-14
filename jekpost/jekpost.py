@@ -4,16 +4,14 @@ import argparse
 import datetime
 import os
 
-def generate_post_file(title, location, disqus_name=None):
-    title_line = "title: {}".format(title)
+def generate_post_file(title, location):
     filename = make_filename(title, get_date_formatted(datetime.date.today()))
-
     os.chdir(location) # switch to destination directory
 
     with open(filename, mode='x', encoding='utf-8') as actual_file:
         print('---', file=actual_file)
         print('layout: post', file=actual_file)
-        print(title_line, file=actual_file)
+        print("title: {}".format(title), file=actual_file)
         print('excerpt: Your excerpt goes here', file=actual_file)
         print('tags: tag1, tag2', file=actual_file)
         print('---', file=actual_file)
@@ -21,7 +19,7 @@ def generate_post_file(title, location, disqus_name=None):
     return filename
 
 def make_filename(post_title, date_prefix):
-    title_formatted = post_title.replace(' ', '-')
+    title_formatted = post_title.replace(' ', '-').lower()
     filename = date_prefix + '-' + title_formatted + '.md'
     return filename
 
@@ -48,17 +46,15 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('title', help='Post title')
     parser.add_argument('location', help='Destination directory')
-    parser.add_argument('-dq', '--disqus', help='Disqus shortname')
     args = parser.parse_args()
 
     post_title = args.title.strip() # remove whitespaces that may be at
                                     # either ends.
 
-    print(" Disqus shortname: ", args.disqus)
-    print(" Post Title: ", post_title)
+    print(" Post Title:", post_title)
 
     try:
-        filename = generate_post_file(post_title, args.location, args.disqus)
+        filename = generate_post_file(post_title, args.location)
     except FileExistsError as err:
         print("\n\n", err)
     except FileNotFoundError as err:
@@ -66,8 +62,7 @@ def main():
     except NotADirectoryError as err:
         print("\n\n", err)
     else:
-        print(" New post created: ", filename)
-        print(" Happy blogging!")
+        print(" New post created:", filename)
 
 if __name__ == '__main__':
     main()

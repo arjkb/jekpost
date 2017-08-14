@@ -51,7 +51,7 @@ def main():
     post_title = args.title.strip() # remove whitespaces that may be at
                                     # either ends.
 
-    print(" Post Title: ", post_title)
+    print(" Post Title:", post_title)
 
     try:
         filename = generate_post_file(post_title, args.location)
@@ -62,7 +62,7 @@ def main():
     except NotADirectoryError as err:
         print("\n\n", err)
     else:
-        print(" New post created: ", filename)
+        print(" New post created:", filename)
 
 if __name__ == '__main__':
     main()

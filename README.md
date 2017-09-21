@@ -1,9 +1,7 @@
-<div class="wrapper">
-  <header>
-  Bar!
-  </header>
-</div>
 # JekPost
+
+* [Download ZIP file](https://github.com/arjunkrishnababu96/jekpost/archive/master.zip)
+
 
 JekPost is a simple script to ease the post creation ritual of Jekyll.
 

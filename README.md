@@ -53,3 +53,6 @@ If you use jekyll, try out JekPost. I could use some feedback!
 #### Project Links
 * JekPost on GitHub: [https://github.com/arjunkrishnababu96/jekpost](https://github.com/arjunkrishnababu96/jekpost)
 * JekPost on PyPi: [https://pypi.python.org/pypi/JekPost](https://pypi.python.org/pypi/JekPost)
+
+---
+\* *it's 14 August 2017 at the time of writing this article*

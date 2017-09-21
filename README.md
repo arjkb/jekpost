@@ -1,7 +1,8 @@
-<header>
-Foo!
-</header>
-
+<div class="wrapper">
+  <header>
+  Bar!
+  </header>
+</div>
 # JekPost
 
 JekPost is a simple script to ease the post creation ritual of Jekyll.

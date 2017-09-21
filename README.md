@@ -1,11 +1,10 @@
 # JekPost
 
-JekPost is a simple script to ease the post creation ritual of [Jekyll.](https://jekyllrb.com/)
+A simple script to ease the post creation ritual of [Jekyll.](https://jekyllrb.com/)
 
 As of today, the script does the following:
-
-* Create a new jekyll post file with appropriately formatted filename.
-* Add required metadata to the top of the post file.
+1. Create a new jekyll post file with appropriately formatted filename.
+2. Add required metadata to the top of the post file.
 
 ### Installation
 

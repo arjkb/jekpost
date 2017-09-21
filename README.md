@@ -52,8 +52,7 @@ If you use jekyll, try out JekPost. I could use some feedback!
 ### Project Links
 * [JekPost on GitHub](https://github.com/arjunkrishnababu96/jekpost)
 * [JekPost on PyPi](https://pypi.python.org/pypi/JekPost)
-* [Download ZIP file](https://github.com/arjunkrishnababu96/jekpost/archive/master.zip)
-* [My blog article about Jekyll](https://arjunkrishnababu96.github.io/introducing-jekpost/)
+* [My blog article about JekPost](https://arjunkrishnababu96.github.io/introducing-jekpost/)
 
 ---
 \* *it's 14 August 2017 at the time of writing this article*

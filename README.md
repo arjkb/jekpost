@@ -1,4 +1,4 @@
-# JekPost
+### Introduction
 
 A simple script to ease the post creation ritual of [Jekyll.](https://jekyllrb.com/)
 
